@@ -16,7 +16,17 @@ const getters = {
 const mutations = {
 
     SET_MONITORS: (state, content) => {
-        state.monitors = content
+
+        for (let i = 0; i < content.length; i++) {
+            let cont={};
+            cont.name=content[i].account.name;
+            cont.er=content[i].er;
+            cont.followers=content[i].followers;
+            cont.target=content[i].percentage_kpi;
+            cont.recomendation=content[i].canon_percentage_kpi;
+            state.monitors.push(cont)
+        }
+
     }
 }
 

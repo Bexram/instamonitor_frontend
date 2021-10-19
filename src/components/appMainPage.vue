@@ -1,9 +1,10 @@
 <template>
   <div id="appMain">
+    <header class="header"></header>
     <v-app id="inspire">
       <v-container fluid>
         <v-data-iterator
-                :items="items"
+                :items="monitors"
                 :items-per-page.sync="itemsPerPage"
                 :page.sync="page"
                 :search="search"
@@ -187,7 +188,7 @@ export default {
       keys: [
         'name',
         'ER',
-        'Follower',
+        'Followers',
         'Target',
         'Recomendation',
       ],
@@ -203,7 +204,7 @@ export default {
         {
           name: 'adelina.sss',
           er: 159,
-          follower: 6.0,
+          followers: 6.0,
           target: 24,
           recomendation: 4.0,
         },
@@ -218,7 +219,7 @@ export default {
       monitors: 'MONITORS',
     }),
     numberOfPages () {
-      return Math.ceil(this.items.length / this.itemsPerPage)
+      return Math.ceil(this.monitors.length / this.itemsPerPage)
     },
     filteredKeys () {
       return this.keys.filter(key => key !== 'Name')
@@ -240,6 +241,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 h3 {
   margin: 40px 0 0;
 }
