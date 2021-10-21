@@ -43,6 +43,19 @@
                         v-model="sortDesc"
                         mandatory
                 >
+                  <v-btn  v-on:click="upData()"
+                          v-if="!updating"
+                          large
+                          depressed
+                          color="blue"
+
+                  >Обновить данные</v-btn>
+                  <v-btn v-if="updating"
+                          large
+                          depressed
+                          color="blue"
+                          loading
+                  ></v-btn>
                   <v-btn
                           large
                           depressed
@@ -111,6 +124,7 @@
               <span class="grey--text">Items per page</span>
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
+
                   <v-btn
                           dark
                           text
@@ -178,6 +192,7 @@ export default {
   },
   data () {
     return {
+      updating: false,
       itemsPerPageArray: [4, 8, 12],
       search: '',
       filter: {},
@@ -211,7 +226,7 @@ export default {
       ],
     }
   },
-  created () {
+  mounted () {
     this.$store.dispatch('Backend/GET_MONITORS')
   },
   computed: {
@@ -226,6 +241,12 @@ export default {
     },
   },
   methods: {
+    upData() {
+      this.updating=true;
+      this.$store.dispatch('Backend/UPDATE_DATA').then(()=>{
+        this.updating=false;
+      })
+    },
     nextPage () {
       if (this.page + 1 <= this.numberOfPages) this.page += 1
     },
