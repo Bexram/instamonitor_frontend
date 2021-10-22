@@ -16,7 +16,7 @@ const getters = {
 const mutations = {
 
     SET_MONITORS: (state, content) => {
-
+        state.monitors=[]
         for (let i = 0; i < content.length; i++) {
             let cont={};
             cont.name=content[i].account.name;
