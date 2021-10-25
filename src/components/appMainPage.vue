@@ -1,19 +1,20 @@
 <template>
     <div id="appMain">
-        <v-app-bar>
-            <img class="d-flex align-start mb-6"
-                 src="../assets/logo.png" alt="creatum">
-            <h1 class="d-flex align-start mb-6"
-            >Мониторинг продвижения аккаунтов Instagram</h1>
 
-                <v-btn class="d-flex align-end mb-6"
-                        color="primary"
-                        fab
-                        small
-                        dark
-                >
-                    <v-icon>mdi-account-circle</v-icon>
-                </v-btn>
+        <v-app-bar>
+            <div class="flex-container"><img src="../assets/logo.png" alt="creatum"></div>
+            <div class="flex-container"><h1>Мониторинг продвижения аккаунтов</h1></div>
+            <div class="btn"> <v-btn      color="primary"
+                                          href="http://bexram.online:8004/admin"
+                                                     fab
+                                                     small
+                                                     dark>
+                <v-icon>mdi-account-circle</v-icon>
+            </v-btn>
+            <span>Админка</span></div>
+
+
+
         </v-app-bar>
         <v-app id="inspire">
             <v-container fluid>
@@ -289,10 +290,16 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .admin {
-        margin-right: 10px;
+    .flex-container {
+        display: flex;
     }
-
+    .btn {
+        position: absolute;
+        right:15px;
+    }
+    span {
+        padding: 5px
+    }
     header {
         overflow: hidden
     }
